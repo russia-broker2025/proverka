@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нелли Зверева - Инвестиционная стратегия</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .calculator {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .slider-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        .amount-display {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .chance-display {
+            background: #e8f5e8;
+            color: #27ae60;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            background: #ecf0f1;
+            border-radius: 25px;
+            height: 20px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-section {
+            background: #f1f2f6;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .info-title {
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .amount-display {
+                font-size: 20px;
+            }
+
+            .chance-display {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-image">НЗ</div>
+            <h1>Нелли Зверева</h1>
+            <p class="subtitle">Персональная инвестиционная стратегия</p>
+        </div>
+
+        <div class="calculator">
+            <div class="input-group">
+                <label for="amount-slider">Сумма инвестиций:</label>
+                <div class="slider-container">
+                    <input type="range" id="amount-slider" class="slider" min="10300" max="55000" value="30000" step="100">
+                    <div class="slider-labels">
+                        <span>10,300₽</span>
+                        <span>55,000₽</span>
+                    </div>
+                </div>
+                <div id="amount-display" class="amount-display">30,000₽</div>
+            </div>
+
+            <div class="input-group">
+                <label>Шанс успеха:</label>
+                <div id="chance-display" class="chance-display">65%</div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 65%"></div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="updateCalculation()">Рассчитать потенциал</button>
+        </div>
+
+        <div class="info-section">
+            <div class="info-title">Финансовая информация</div>
+            <div class="info-item">
+                <span class="info-label">Минимальная сумма:</span>
+                <span class="info-value">10,300₽</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Максимальная сумма:</span>
+                <span class="info-value">55,000₽</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Базовый процент:</span>
+                <span class="info-value">3-95%</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Срок инвестиций:</span>
+                <span class="info-value">30 дней</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Тип стратегии:</span>
+                <span class="info-value">Адаптивная</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('amount-slider');
+        const amountDisplay = document.getElementById('amount-display');
+        const chanceDisplay = document.getElementById('chance-display');
+        const progressFill = document.getElementById('progress-fill');
+
+        function formatNumber(num) {
+            return new Intl.NumberFormat('ru-RU').format(num) + '₽';
+        }
+
+        function calculateChance(amount) {
+            // Формула расчета: чем больше сумма, тем выше шанс (от 3% до 95%)
+            const minAmount = 10300;
+            const maxAmount = 55000;
+            const minChance = 3;
+            const maxChance = 95;
+            
+            const ratio = (amount - minAmount) / (maxAmount - minAmount);
+            const chance = Math.round(minChance + (ratio * (maxChance - minChance)));
+            
+            return Math.max(minChance, Math.min(maxChance, chance));
+        }
+
+        function updateDisplay() {
+            const amount = parseInt(slider.value);
+            const chance = calculateChance(amount);
+            
+            amountDisplay.textContent = formatNumber(amount);
+            chanceDisplay.textContent = chance + '%';
+            progressFill.style.width = chance + '%';
+        }
+
+        function updateCalculation() {
+            updateDisplay();
+            
+            // Добавляем визуальный эффект
+            const button = document.querySelector('.calculate-btn');
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        // Обновление при изменении слайдера
+        slider.addEventListener('input', updateDisplay);
+        
+        // Инициализация
+        updateDisplay();
+    </script>
+</body>
+</html>
