@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка на вывод средств - Нелли Зверева</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .status-badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .info-section {
+            margin-bottom: 30px;
+        }
+        .info-section h2 {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .info-item {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        .info-item label {
+            display: block;
+            color: #666;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .info-item .value {
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .amount-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .amount-section h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        .amount-section .amount {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .timeline {
+            margin-top: 30px;
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: #e0e0e0;
+        }
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #4CAF50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+        .timeline-dot.pending {
+            background: #ff9800;
+        }
+        .timeline-dot svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        .timeline-content {
+            flex: 1;
+            padding-top: 5px;
+        }
+        .timeline-content h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .timeline-content p {
+            color: #666;
+            font-size: 14px;
+        }
+        .timeline-content .time {
+            color: #999;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .footer {
+            background: #f8f9ff;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        .footer p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .note p {
+            color: #856404;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Заявка на вывод средств</h1>
+            <p>№ WD-2025-10-05-00173</p>
+            <span class="status-badge">✓ В обработке</span>
+        </div>
+        
+        <div class="content">
+            <div class="info-section">
+                <h2>Данные клиента</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>ФИО клиента</label>
+                        <div class="value">Нелли Зверева</div>
+                    </div>
+                    <div class="info-item">
+                        <label>ID аккаунта</label>
+                        <div class="value">NZ-458921</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Дата регистрации</label>
+                        <div class="value">12.08.2024</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Статус верификации</label>
+                        <div class="value">✓ Подтверждён</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="amount-section">
+                <h3>Сумма к выводу</h3>
+                <div class="amount">₽ 127,450.00</div>
+                <p>Сто двадцать семь тысяч четыреста пятьдесят рублей</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Реквизиты для перевода</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Способ вывода</label>
+                        <div class="value">Банковская карта</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Номер карты</label>
+                        <div class="value">•••• 7392</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Банк получателя</label>
+                        <div class="value">Сбербанк России</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Держатель карты</label>
+                        <div class="value">ZVEREVA NELLY</div>
+                    </div>
+                </div>
+
+                <div class="note">
+                    <p><strong>Примечание:</strong> Средства будут зачислены на указанную карту в течение 3-5 рабочих дней после одобрения заявки. Комиссия за вывод не взимается.</p>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Детали заявки</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Дата создания</label>
+                        <div class="value">05.10.2025, 14:18</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Источник средств</label>
+                        <div class="value">Торговый счёт</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Доступный баланс</label>
+                        <div class="value">₽ 127,450.00</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Ожидаемая дата</label>
+                        <div class="value">10.10.2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>История операции</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Заявка создана</h4>
+                            <p>Клиент подал заявку на вывод средств</p>
+                            <div class="time">05.10.2025, 14:18</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Проверка безопасности</h4>
+                            <p>Заявка прошла автоматическую проверку системы безопасности</p>
+                            <div class="time">05.10.2025, 14:20</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot pending">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Ожидает обработки</h4>
+                            <p>Заявка находится в очереди на обработку финансовым отделом</p>
+                            <div class="time">В обработке</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Служба поддержки:</strong> support@broker2025.ru | +7 (495) 123-45-67</p>
+            <p style="margin-top: 10px;">Этот документ создан автоматически и не требует подписи.</p>
+            <p style="margin-top: 5px; font-size: 12px; color: #999;">© 2025 Russia Broker. Все права защищены.</p>
+        </div>
+    </div>
+</body>
+</html>
