@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 Жирный Брокер - Профессиональная Торговля</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 2rem 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            text-align: center;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .warning {
+            background: linear-gradient(135deg, #ff4757, #c44569);
+            border: 2px solid #ff6b7a;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
+        }
+        
+        .warning h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .status-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .status-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing {
+            margin: 4rem 0;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .pricing-table {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .pricing-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .pricing-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .insurance {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .insurance h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-block {
+            background: linear-gradient(135deg, #ffd700, #ff6b35);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            color: #000;
+        }
+        
+        .cta-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .telegram-btn {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .telegram-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.5);
+        }
+        
+        .company-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .company-info h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-table {
+                font-size: 0.9rem;
+            }
+            
+            .cta-block h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">💰 ЖИРНЫЙ БРОКЕР 💰</div>
+            <div class="tagline">Профессиональная торговля на финансовых рынках</div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="warning">
+                <h3>⚠️ ВНИМАНИЕ! ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ ⚠️</h3>
+                <p>Торговля на финансовых рынках связана с высокими рисками. Инвестируйте только те средства, потерю которых вы можете себе позволить. Прошлая доходность не гарантирует будущих результатов.</p>
+            </div>
+            
+            <div class="status-grid">
+                <div class="status-card">
+                    <div class="status-icon">📈</div>
+                    <h3>Активная торговля</h3>
+                    <p>Ежедневный мониторинг рынков и поиск лучших возможностей для прибыли</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon">🔥</div>
+                    <h3>Горячие сигналы</h3>
+                    <p>Получайте актуальные торговые сигналы в режиме реального времени</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon">📊</div>
+                    <h3>Аналитика</h3>
+                    <p>Глубокий технический и фундаментальный анализ рынков</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon">💎</div>
+                    <h3>VIP поддержка</h3>
+                    <p>Персональные консультации и индивидуальный подход к каждому клиенту</p>
+                </div>
+            </div>
+            
+            <div class="pricing">
+                <h2>📋 ТАРИФЫ И УСЛУГИ</h2>
+                <div class="pricing-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Тариф</th>
+                                <th>Стоимость</th>
+                                <th>Включено</th>
+                                <th>Доходность</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🥉 Базовый</td>
+                                <td>5,000 ₽/мес</td>
+                                <td>Базовые сигналы, чат</td>
+                                <td>15-25% в месяц</td>
+                            </tr>
+                            <tr>
+                                <td>🥈 Премиум</td>
+                                <td>15,000 ₽/мес</td>
+                                <td>Все сигналы, аналитика</td>
+                                <td>25-40% в месяц</td>
+                            </tr>
+                            <tr>
+                                <td>🥇 VIP</td>
+                                <td>35,000 ₽/мес</td>
+                                <td>Все + персональные консультации</td>
+                                <td>40-60% в месяц</td>
+                            </tr>
+                            <tr>
+                                <td>💎 Элит</td>
+                                <td>100,000 ₽/мес</td>
+                                <td>Индивидуальная стратегия</td>
+                                <td>60-100% в месяц</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="insurance">
+                <h3>🛡️ СТРАХОВАЯ ЗАЩИТА</h3>
+                <p>Мы настолько уверены в наших стратегиях, что предоставляем гарантию возврата средств при убытке более 20% от депозита в течение первого месяца. Ваши инвестиции под надежной защитой!</p>
+            </div>
+            
+            <div class="cta-block">
+                <h2>🚀 НАЧНИТЕ ЗАРАБАТЫВАТЬ СЕГОДНЯ!</h2>
+                <p>Присоединяйтесь к сообществу успешных трейдеров и получите доступ к эксклюзивным торговым стратегиям</p>
+                <a href="https://t.me/zhirny_broker" class="telegram-btn" target="_blank">📱 Связаться в Telegram</a>
+            </div>
+            
+            <div class="company-info">
+                <h3>🏢 О КОМПАНИИ</h3>
+                <p><strong>Жирный Брокер</strong> - это команда профессиональных трейдеров с многолетним опытом работы на финансовых рынках. Мы специализируемся на краткосрочной и среднесрочной торговле различными активами: акции, валюты, криптовалюты, сырьевые товары.</p>
+                <br>
+                <p><strong>Наши преимущества:</strong></p>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>✅ Более 5 лет успешной торговли</li>
+                    <li>✅ Прозрачная отчетность по всем сделкам</li>
+                    <li>✅ Круглосуточная поддержка</li>
+                    <li>✅ Обучающие материалы для начинающих</li>
+                    <li>✅ Регулярные вебинары и мастер-классы</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <footer style="text-align: center; padding: 2rem; opacity: 0.7;">
+        <p>© 2025 Жирный Брокер. Все права защищены. | <a href="https://t.me/zhirny_broker" style="color: #ffd700;">Telegram: @zhirny_broker</a></p>
+    </footer>
+</body>
+</html>
